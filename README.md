@@ -1,39 +1,174 @@
-汉语 | [English]
+# DomFly
 
-### 领地飞行插件
+<div align="center">
 
-DomFly 是一个轻量级的 Minecraft 插件，允许玩家在自己的领地内飞行。非常适合服务器经济和建筑导向的游戏玩法！
+**🚀 Minecraft 领地飞行插件**
 
-### ✨ 功能特点
+[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/ColdeZhang/DomFly)
+[![Minecraft](https://img.shields.io/badge/minecraft-1.21.8-green.svg)](https://papermc.io/)
+[![Java](https://img.shields.io/badge/java-21-orange.svg)](https://adoptium.net/)
+[![License](https://img.shields.io/badge/license-MIT-red.svg)](LICENSE)
 
-- **领地飞行**: 在领地里输入`/domfly`
-- **无缝切换**: 跨越领地边界时平滑启用/禁用飞行
-- **权限控制**: 针对不同用户组的精细权限管理
-- **自定义消息**: 完全可配置的通知系统
+[简体中文](README.md) | [English](README_EN.md)
+
+</div>
+
+---
+
+### 📖 项目简介
+
+DomFly 是一个轻量级的 Minecraft 服务器插件，专为 Paper/Spigot 服务器设计。该插件允许玩家在自己的领地范围内自由飞行，为建筑和管理领地提供便利，同时保持游戏平衡性。
+
+### ✨ 主要特性
+
+- **🏠 领地飞行** - 玩家可以在自己拥有的领地内启用飞行模式
+- **🔐 权限管理** - 灵活的权限系统，可精细控制玩家飞行权限
+- **⚡ 自动检测** - 自动检测玩家是否在领地范围内，离开领地自动禁用飞行
+- **🎯 轻量高效** - 优化的性能，对服务器资源占用极小
+- **🔧 易于配置** - 简单直观的配置文件
+- **🌐 多语言支持** - 支持自定义消息和多语言
+
+### 📋 系统要求
+
+- **Minecraft 版本**: 1.21.8 或更高
+- **服务端**: Paper / Spigot / Purpur
+- **Java 版本**: Java 21 或更高
+- **依赖插件**: 需要领地插件（如 Residence、GriefPrevention 等）
 
 ### 📥 安装方法
 
-1. 从发布页面下载最新的 DomFly.jar
-2. 将 jar 文件放入服务器的 `plugins` 文件夹
-3. 重启服务器
-4. 配置插件以匹配您的领地系统
-5. 为玩家设置相应权限
+1. **下载插件**
+   - 从 [Releases](https://github.com/ColdeZhang/DomFly/releases) 页面下载最新版本的 `DomFly.jar`
 
-### ⚙️ 配置说明
+2. **安装到服务器**
+   ```bash
+   # 将 jar 文件放入服务器的 plugins 文件夹
+   cp DomFly.jar /path/to/your/server/plugins/
+   ```
 
-```yaml
-# DomFly 配置
+3. **重启服务器**
+   ```bash
+   # 重启服务器以加载插件
+   /stop  # 或使用其他重启命令
+   ```
 
-```
+4. **配置插件**
+   - 首次启动后会在 `plugins/DomFly/` 目录下生成配置文件
+   - 根据需要修改配置文件
 
-### 🔐 权限节点
-
-- `domfly.use` - 基础飞行权限
-- `domfly.admin` - 管理权限
-- `domfly.free` - 绕过经济费用
+5. **设置权限**
+   - 使用权限管理插件为玩家或用户组分配相应权限
 
 ### 🎮 使用方法
 
-只需进入您自己的领地输入`/domfly`即可开始飞行！插件会自动处理：
-- 离开领地时禁用飞行
-- 边界检测
+#### 基础命令
+
+- `/domfly` - 在自己的领地内切换飞行模式
+- `/domfly help` - 显示帮助信息
+- `/domfly reload` - 重新加载配置文件（需要管理员权限）
+
+#### 使用流程
+
+1. 玩家进入自己拥有或有权限的领地
+2. 输入 `/domfly` 命令启用飞行
+3. 在领地内自由飞行
+4. 离开领地时自动禁用飞行模式
+
+### 🔐 权限节点
+
+| 权限节点 | 说明 | 默认值 |
+|---------|------|--------|
+| `domfly.use` | 允许使用基础飞行功能 | false |
+| `domfly.admin` | 允许使用管理命令（如 reload） | op |
+| `domfly.bypass` | 绕过领地检测（可在任何地方飞行） | op |
+
+### ⚙️ 配置说明
+
+配置文件位置：`plugins/DomFly/config.yml`
+
+```yaml
+# DomFly 配置文件
+
+# 飞行设置
+flight:
+  # 离开领地后是否立即禁用飞行
+  disable-on-leave: true
+  # 检测间隔（秒）
+  check-interval: 1
+
+# 消息设置
+messages:
+  # 飞行已启用
+  flight-enabled: "&a飞行已启用！"
+  # 飞行已禁用
+  flight-disabled: "&c飞行已禁用！"
+  # 不在领地内
+  not-in-territory: "&c你不在自己的领地内！"
+  # 权限不足
+  no-permission: "&c你没有权限使用此功能！"
+```
+
+### 🛠️ 开发构建
+
+#### 前置要求
+
+- JDK 21 或更高版本
+- Maven 3.6 或更高版本
+- Git
+
+#### 构建步骤
+
+```bash
+# 克隆仓库
+git clone https://github.com/ColdeZhang/DomFly.git
+cd DomFly
+
+# 使用 Maven 构建
+mvn clean package
+
+# 构建产物位于 target/DomFly-2.0.0.jar
+```
+
+### 🤝 贡献指南
+
+欢迎提交 Issue 和 Pull Request！
+
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 提交 Pull Request
+
+### 📝 变更日志
+
+查看 [CHANGELOG.md](CHANGELOG.md) 了解详细的版本更新历史。
+
+### 📄 许可证
+
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+
+### 👥 作者
+
+- **Hotguo** - *主要开发者*
+
+### 🙏 致谢
+
+感谢所有为这个项目做出贡献的开发者和用户！
+
+### 📞 支持与反馈
+
+- 🐛 [报告 Bug](https://github.com/ColdeZhang/DomFly/issues)
+- 💡 [功能建议](https://github.com/ColdeZhang/DomFly/issues)
+- 📧 联系作者：通过 GitHub Issues
+
+---
+
+<div align="center">
+
+**Made with ❤️ by Hotguo**
+
+⭐ 如果你喜欢这个项目，请考虑给它一个 Star！
+
+</div>
+
+</div>
