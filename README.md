@@ -4,7 +4,7 @@
 
 **🚀 Minecraft 领地飞行插件**
 
-[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/ColdeZhang/DomFly)
+[![Version](https://img.shields.io/badge/version-2.0.3-blue.svg)](https://github.com/wunanc/DomFly)
 [![Minecraft](https://img.shields.io/badge/minecraft-1.21.8-green.svg)](https://papermc.io/)
 [![Java](https://img.shields.io/badge/java-21-orange.svg)](https://adoptium.net/)
 [![License](https://img.shields.io/badge/license-MIT-red.svg)](LICENSE)
