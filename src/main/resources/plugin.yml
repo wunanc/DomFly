@@ -5,6 +5,7 @@ api-version: '1.21'
 authors: [ Hotguo ]
 depend: [ Dominion ]
 description: Dominion Territory Flight Add-on Plugin.
+folia-supported: true
 
 commands:
   domfly:
