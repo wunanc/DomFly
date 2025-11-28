@@ -39,7 +39,7 @@ public class Fly implements Listener {
         }
 
         // 检查玩家是否有权限
-        if (!player.hasPermission("Domfly.use")) {
+        if (!player.hasPermission("domfly.use")) {
             player.sendMessage(ChatColor.RED + "你没有使用此命令的权限！");
             return;
         }
