@@ -7,7 +7,7 @@
 [![Java](https://img.shields.io/badge/java-21-orange.svg)](https://adoptium.net/)
 [![License](https://img.shields.io/badge/license-MIT-red.svg)](LICENSE)
 
-[简体中文](README.md)  | [English](/README_EN.md)
+[简体中文](README.md)  | [English]
 
 </div>
 
