@@ -147,4 +147,6 @@ mvn clean package
 
 ⭐ 如果你喜欢这个项目，请考虑给它一个 Star！
 
+[![bStats](https://bstats.org/signatures/bukkit/DomFly.svg)](https://bstats.org/plugin/bukkit/DomFly)
+
 </div>
