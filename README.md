@@ -1,6 +1,7 @@
 <div align="center">
 
 **🚀 Minecraft 领地飞行插件**
+#### 该项目为修改版
 
 [![Version](https://img.shields.io/badge/version-2.0.3-blue.svg)](https://github.com/wunanc/DomFly)
 [![Minecraft](https://img.shields.io/badge/minecraft-1.21.8-green.svg)](https://papermc.io/)
