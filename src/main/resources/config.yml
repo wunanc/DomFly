@@ -1,3 +1,48 @@
-#骗你的啥也没有awa
-#调试模式,非必要请勿开启
 debug: false
+
+# 离开领地后的处理模式 0: 立即关闭飞行 1: 缓冲模式，给玩家一定时间回到领地
+departure_mode: 1
+
+# 缓冲时间（秒）
+# 只有在 departure_mode = 1 时生效
+# 玩家离开领地后，在这个时间内重新进入领地不会关闭飞行
+departure_buffer_seconds: 10
+
+# 值越小检测越频繁但性能消耗越大，建议保持默认 (2 = 每0.1秒检测一次)
+move_check_interval: 2
+move_distance_threshold: 1
+
+# 禁用的游戏模式（在这些模式下不能使用领地飞行）
+disabled_gamemodes:
+  - TEST
+
+# 自动降落模式
+# true: 离开领地自动降落，不会掉落
+# false: 直接取消飞行，可能会掉落
+auto_land_on_departure: true
+
+# 自动着陆高度（Y坐标）
+# 离开领地时，如果玩家高度超过此值，会自动降落到安全位置
+safe_land_height: 255
+
+# 权限检查选项
+check_owner_only: true
+# false: 玩家在自己领地或其他领地都可飞行
+# true: 只有在领地所有者的领地才能飞行（仅限自己拥有的领地）
+
+# 消息前缀
+message_prefix: "§7[DomFly] "
+
+# 警告消息开关
+warnings:
+  enable: true
+  # 开启离开领地警告
+  show_departure_warning: true
+  # 警告显示的剩余秒数（多个值会分多次显示）
+  warn_at_seconds:
+    - 5
+    - 3
+    - 1
+
+cache_territory_info: true #非必要不要动 只有在出莫名其妙的Bug时可关闭 关闭后性能略微下降
+cache_expiry_seconds: 30

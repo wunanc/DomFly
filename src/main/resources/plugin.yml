@@ -1,16 +1,16 @@
 name: DomFly
 version: ${project.version}
-main: com.wunanc.domFly.DomFly
+main: com.wunanc.domfly.DomFly
 api-version: '1.21'
-authors: [ Hotguo ]
-depend: [ Dominion ]
-description: Dominion Territory Flight Add-on Plugin.
+authors: [Hotguo,MingLi]
+description: Dom领地飞行插件
 folia-supported: true
+website: https://github.com/wunanc/DomFly
 
 commands:
   domfly:
-    description: 在领地内切换飞行模式
-    usage: /domfly
+    description: Toggle flight mode within your territory
+    usage: /domfly [help|reload|undomfly <player>]
     permission: domfly.use
     permission-message: "§c你没有权限使用此命令!"
 
@@ -21,3 +21,5 @@ permissions:
   domfly.admin:
     description: "管理员权限"
     default: op
+    children:
+      domfly.use: true

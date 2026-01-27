@@ -1,0 +1,87 @@
+error:
+  player_only: "§c只有玩家可以使用此命令！"
+  no_permission: "§c你没有权限使用此命令！"
+  player_not_found: "§c找不到玩家: {player}"
+  unknown_command: "§c未知命令，使用 /domfly help 查看帮助"
+
+flight:
+  already_creative: "§e你已经是创造模式，无需使用领地飞行！"
+  already_spectator: "§e你已经是旁观模式，无需使用领地飞行！"
+  enabled: "§a领地飞行已开启！你可以在自己的领地内飞行。"
+  disabled: "§e领地飞行已关闭！"
+  denied_not_in_territory: "§c你只能在自己的领地内使用飞行功能！"
+  auto_disabled_left_territory: "§c你已离开自己的领地，飞行功能自动关闭！"
+  force_disabled: "§c管理员已强制关闭你的领地飞行。"
+
+departure:
+  warning: "§6警告: 你即将离开领地飞行区域！"
+  buffer_remaining: "§e你还有 {seconds} 秒回到领地，否则飞行将被禁用！"
+
+admin:
+  help:
+    header: "§6喵喵喵----DomFly菜单面板----喵喵喵"
+    footer: "§6喵喵喵----DomFly菜单面板----喵喵喵"
+    usage: "§e/domfly {command}"
+  reload:
+    success: "§a插件配置已重载！"
+    error: "§c重载配置时发生错误: {error}"
+  force:
+    success: "§a已强制关闭玩家 {player} 的领地飞行"
+    error: "§c执行失败: {error}"
+
+system:
+  startup:
+    header: "喵喵喵----DomFly菜单面板----喵喵喵"
+    enabled: " DomFly v{version} 已成功启用！"
+    author: " 领地飞行插件 - 由 Hotguo 开发"
+    footer: "喵喵喵----DomFly菜单面板----喵喵喵"
+    failed: "插件启动失败"
+  shutdown:
+    disabled: "DomFly v{version} 已禁用。"
+    all_flights_disabled: "已禁用所有飞行"
+
+  config:
+    loaded: "插件配置已加载"
+    reloaded: "配置文件已重新加载"
+    created: "已创建默认配置文件: config.yml"
+    validate_warning: "无效的配置: {config}，将使用默认值 {value}"
+    validate_warning_seconds: "缓冲模式下 departure_buffer_seconds 必须 > 0，将使用默认值 10"
+    save_failed: "保存配置文件失败: {error}"
+
+  lang:
+    loaded: "语言配置已加载 (中文)"
+    reloaded: "语言配置已重载"
+    created: "已创建默认语言文件: lang.yml"
+    missing_key: "未找到消息键: {key}"
+    format_failed: "格式化消息失败 [key: {key}]: {error}"
+    save_failed: "保存语言文件失败: {error}"
+
+  territory:
+    cache_cleared: "领地缓存已清空"
+    cache_cleanup_started: "领地缓存清理任务已启动"
+    check_failed: "领地检查失败 [玩家: {player}]: {error}"
+    get_name_failed: "获取领地名称失败: {error}"
+
+  flight:
+    reload_started: "开始重载插件配置..."
+    reload_complete: "插件配置重载完成"
+
+debug:
+  prefix: "[DomFly 调试] "
+  player_entered_territory: "玩家 {player} 进入领地: {territory}"
+  player_left_territory: "玩家 {player} 离开领地: {territory}"
+  player_flight_enabled: "玩家 {player} 飞行已启用"
+  player_flight_disabled: "玩家 {player} 飞行已禁用"
+  territory_check: "玩家 {player}, 领地: {territory}, 结果: {result}"
+  player_not_in_any_territory: "不在任何领地内"
+  player_is_owner: "是领地所有者"
+  player_has_admin: "有Admin权限"
+  player_no_rights: "无权限访问领地"
+  owner_only_mode: "仅检查所有者模式，无权限"
+
+command:
+  command_not_found: "无法找到 'domfly' 命令！"
+  reload_config_failed: "重载配置失败: {error}"
+
+buffer:
+  cancelled: "玩家已退回领地，缓冲已取消"
