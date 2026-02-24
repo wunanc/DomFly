@@ -1,4 +1,4 @@
-package com.wunanc.domfly.model;
+package com.wunanc.DomFly.model;
 
 import org.bukkit.Location;
 import java.util.Objects;
@@ -16,7 +16,6 @@ public final class WorldCoordinate {
         this.y = location.getBlockY();
         this.z = location.getBlockZ();
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -24,7 +23,6 @@ public final class WorldCoordinate {
         WorldCoordinate that = (WorldCoordinate) o;
         return x == that.x && y == that.y && z == that.z && Objects.equals(worldUid, that.worldUid);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(worldUid, x, y, z);

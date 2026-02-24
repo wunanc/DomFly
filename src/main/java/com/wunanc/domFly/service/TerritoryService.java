@@ -1,4 +1,4 @@
-package com.wunanc.domfly.service;
+package com.wunanc.DomFly.service;
 
 import org.bukkit.entity.Player;
 

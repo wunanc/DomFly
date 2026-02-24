@@ -1,8 +1,6 @@
-package com.wunanc.domfly.service;
+package com.wunanc.DomFly.service;
 
-import com.wunanc.domfly.core.Context;
-import org.bukkit.GameMode;
-
+import com.wunanc.DomFly.core.Context;
 import java.util.List;
 
 public final class ConfigManager {
@@ -29,23 +27,15 @@ public final class ConfigManager {
     public int getDepartureMode() {
         return context.getInt("flight.departure_mode", 0);
     }
-
     public int getBufferSeconds() {
         return context.getInt("flight.buffer_seconds", 10);
     }
-
     public boolean isAutoLand() {
         return context.getBool("flight.auto_land", true);
     }
-
     public List<Integer> getWarningSeconds() {
         return context.getFileConfig().getIntegerList("flight.warnings");
     }
-
-    public boolean isGameModeDisabled(GameMode mode) {
-        return context.getFileConfig().getStringList("disabled_gamemodes").contains(mode.name());
-    }
-
     public boolean isDebugEnabled() {
         return context.getBool("debug", false);
     }

@@ -2,7 +2,7 @@ error:
   player_only: "§c只有玩家可以使用此命令！"
   no_permission: "§c你没有权限使用此命令！"
   player_not_found: "§c找不到玩家: {player}"
-  unknown_command: "§c未知命令，使用 /domfly help 查看帮助"
+  unknown_command: "§c未知命令，使用 /DomFly help 查看帮助"
 
 flight:
   already_creative: "§e你已经是创造模式，无需使用领地飞行！"
@@ -21,7 +21,7 @@ admin:
   help:
     header: "§6喵喵喵----DomFly菜单面板----喵喵喵"
     footer: "§6喵喵喵----DomFly菜单面板----喵喵喵"
-    usage: "§e/domfly {command}"
+    usage: "§e/DomFly {command}"
   reload:
     success: "§a插件配置已重载！"
     error: "§c重载配置时发生错误: {error}"
@@ -80,7 +80,7 @@ debug:
   owner_only_mode: "仅检查所有者模式，无权限"
 
 command:
-  command_not_found: "无法找到 'domfly' 命令！"
+  command_not_found: "无法找到 'DomFly' 命令！"
   reload_config_failed: "重载配置失败: {error}"
 
 buffer:

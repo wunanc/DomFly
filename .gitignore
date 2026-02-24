@@ -26,17 +26,7 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 # IntelliJ IDEA
-/.idea/inspectionProfiles/Project_Default.xml
-/.idea/.gitignore
-/.idea/compiler.xml
-/.idea/copilot.data.migration.ask2agent.xml
-/.idea/encodings.xml
-/.idea/jarRepositories.xml
-/.idea/material_theme_project_new.xml
-/.idea/misc.xml
-/.idea/modules.xml
-/.idea/vcs.xml
-/.idea/workspace.xml
+.idea/
 *.iws
 *.iml
 *.ipr
