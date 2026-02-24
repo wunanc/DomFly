@@ -1,4 +1,4 @@
-name: DomFly
+name: ${project.name}
 version: ${project.version}
 main: com.wunanc.DomFly.DomFly
 api-version: '1.21'
@@ -9,9 +9,9 @@ website: https://github.com/wunanc/DomFly
 
 commands:
   domfly:
-    description: Toggle flight mode within your territory
-    usage: /DomFly [help|reload|undomfly <player>]
-    permission: DomFly.use
+    description: DomFly的权限控制
+    usage: /domfly [help|reload|undomfly <player>]
+    permission: domfly.use
     permission-message: "§c你没有权限使用此命令!"
 
 permissions:
