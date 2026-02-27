@@ -3,7 +3,6 @@ package top.wunanc.domfly.handler;
 import cn.lunadeer.dominion.api.dtos.DominionDTO;
 import cn.lunadeer.dominion.api.DominionAPI;
 import cn.lunadeer.dominion.api.dtos.flag.Flags;
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -61,7 +60,6 @@ public class Fly implements Listener {
                 String dominionName = dominion != null ? dominion.getName() : "无";
                 plugin.getLogger().info("玩家: " + player.getName() + " 所在领地: " + dominionName);
             }
-            return;
         }
     }
 
@@ -74,11 +72,11 @@ public class Fly implements Listener {
         if (flyingPlayers.contains(playerId)) {
             // 关闭飞行
             disableFlight(player);
-            player.sendMessage(ChatColor.YELLOW + "领地飞行已关闭！");
+            player.sendMessage(languageManager.getMessage("FlyDisabled"));
         } else {
             // 开启飞行
             enableFlight(player);
-            player.sendMessage(ChatColor.GREEN + "领地飞行已开启！你可以在自己的领地内飞行。");
+            player.sendMessage(languageManager.getMessage("FlyEnabled"));
         }
     }
 
@@ -148,7 +146,7 @@ public class Fly implements Listener {
             if (!isInOwnClaim(player)) {
                 // 离开领地，自动关闭飞行
                 disableFlight(player);
-                player.sendMessage(ChatColor.RED + "你已离开自己的领地，飞行功能自动关闭！");
+                player.sendMessage(languageManager.getMessage("AutoDisable"));
             }
         }
     }
@@ -162,14 +160,11 @@ public class Fly implements Listener {
         if (flyingPlayers.contains(playerId)) {
             // 禁用飞行
             disableFlight(player);
-            player.sendMessage(ChatColor.RED + "管理员已强制关闭你的领地飞行！");
+            player.sendMessage(languageManager.getMessage("SudoDisabled"));
         }
         // 即使不在flyingPlayers中，也确保飞行被关闭
         player.setAllowFlight(false);
         player.setFlying(false);
     }
-    
-    public Configuration getConfigManager() {
-        return configuration;
-    }
+
 }
