@@ -110,7 +110,8 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         try {
             if (domflyListener != null) {
                 domflyListener.forceDisableFlight(target);
-                Component message = languageManager.getMessage("SudoDisabledexecutor").replaceText(builder -> builder.match("{player}").replacement(target.getName()));
+                Component message = languageManager.getMessage("SudoDisabledexecutor")
+                        .replaceText(builder -> builder.matchLiteral("{player}").replacement(target.getName()));
                 sendMessage(executor, message);
             } else {
                 sendMessage(executor, languageManager.getMessage("CannotVisitListener"));
