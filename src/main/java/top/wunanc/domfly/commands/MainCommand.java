@@ -1,11 +1,14 @@
 package top.wunanc.domfly.commands;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 import top.wunanc.domfly.DomFly;
 import top.wunanc.domfly.config.LanguageManager;
 import top.wunanc.domfly.handler.Fly;
@@ -26,12 +29,12 @@ public class MainCommand implements CommandExecutor, TabCompleter {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         // 主命令（无参数） - 执行飞行功能
         if (args.length == 0) {
             // 检查发送者是否为玩家
             if (!(sender instanceof Player player)) {
-                sender.sendMessage(languageManager.getMessage("OnlyPlayer"));
+                sendMessage(sender, languageManager.getMessage("OnlyPlayer"));
                 return true;
             }
 
@@ -41,47 +44,49 @@ public class MainCommand implements CommandExecutor, TabCompleter {
 
         switch (args[0].toLowerCase()) {
             case "help":
-                if (!sender.hasPermission("domfly.admin")) {
-                    sender.sendMessage("§c你没有权限执行此命令！");
+                if (!sender.hasPermission("domfly.use")) {
+                    sendMessage(sender, languageManager.getMessage("NoPermission"));
                     return true;
                 }
-                CommandHelp.sendHelp1(sender);
+                CommandHelp.sendHelp(sender, languageManager);
                 break;
 
             case "reload":
                 // 检查权限
                 if (!sender.hasPermission("domfly.admin") && !sender.isOp()) {
-                    sender.sendMessage("§c你没有权限执行此命令！");
+                    sendMessage(sender, languageManager.getMessage("NoPermission"));
                     return true;
                 }
 
                 // 执行重载
                 try {
                     plugin.reloadPluginConfig();
-                    sender.sendMessage("§a插件配置已重载!");
+                    //成功
+                    sendMessage(sender, languageManager.getMessage("Reload.Success"));
                 } catch (Exception e) {
-                    sender.sendMessage("§c重载配置时发生错误: " + e.getMessage());
-                    plugin.getLogger().severe("重载配置失败: " + e.getMessage());
+                    //错误处理
+                    sendMessage(sender, languageManager.getMessage("Reload.Error").append(Component.text(e.getMessage())));
+                    sendMessage(Bukkit.getConsoleSender(), languageManager.getMessage("Reload.Error").append(Component.text(e.getMessage())));
                 }
                 break;
 
             case "undomfly":
                 // 检查权限
                 if (!sender.hasPermission("domfly.admin") && !sender.isOp()) {
-                    sender.sendMessage("§c你没有权限执行此命令！");
+                    sendMessage(sender, languageManager.getMessage("NoPermission"));
                     return true;
                 }
 
                 // 检查参数数量
                 if (args.length < 2) {
-                    sender.sendMessage("§c用法: /Domfly undomfly <玩家名>");
+                    sendMessage(sender, Component.text("usage: /Domfly undomfly <player>").color(NamedTextColor.RED));
                     return true;
                 }
 
                 // 获取目标玩家
                 Player target = Bukkit.getPlayer(args[1]);
                 if (target == null) {
-                    sender.sendMessage("§c找不到玩家: " + args[1]);
+                    sendMessage(sender, languageManager.getMessage("CanNotFindPlayer").append(Component.text(args[1]).color(NamedTextColor.YELLOW)));
                     return true;
                 }
 
@@ -90,7 +95,8 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                 break;
 
             default:
-                sender.sendMessage("§c未知命令，使用 /Domfly help 查看帮助");
+                //未知命令
+                sendMessage(sender, languageManager.getMessage("UnknownCommand"));
                 break;
         }
 
@@ -104,19 +110,26 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         try {
             if (domflyListener != null) {
                 domflyListener.forceDisableFlight(target);
-                executor.sendMessage("§a已强制关闭玩家 " + target.getName() + " 的领地飞行");
-                target.sendMessage("§c管理员已强制关闭你的领地飞行");
+                Component message = languageManager.getMessage("SudoDisabledexecutor").replaceText(builder -> builder.match("{player}").replacement(target.getName()));
+                sendMessage(executor, message);
             } else {
-                executor.sendMessage("§c错误：无法访问领地飞行监听器");
+                sendMessage(executor, languageManager.getMessage("CannotVisitListener"));
             }
         } catch (Exception e) {
-            executor.sendMessage("§c执行失败: " + e.getMessage());
-            plugin.getLogger().warning("强制关闭领地飞行时出错: " + e.getMessage());
+            //错误捕捉
+            sendMessage(executor, languageManager.getMessage("SudoDisableError").append(Component.text(e.getMessage())));
+            sendMessage(Bukkit.getConsoleSender(), languageManager.getMessage("SudoDisableError").append(Component.text(e.getMessage())));
         }
     }
 
+    public void sendMessage(CommandSender sender, Component message) {
+        if (message != null) {
+            sendMessage(sender, languageManager.getPluginPrefix().append(message));
+        } else sender.sendMessage(Component.text("Can't find the message, please contact your administrator to check the DomFly language file!").color(NamedTextColor.RED));
+    }
+
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, String[] args) {
         List<String> completions = new ArrayList<>();
 
         if (args.length == 1) {

@@ -54,8 +54,4 @@ public class Configuration {
     public boolean isDebug() {
         return debug;
     }
-
-    public void setDebug(boolean debug) {
-        this.debug = debug;
-    }
 }
