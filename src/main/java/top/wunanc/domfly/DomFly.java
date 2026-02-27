@@ -37,10 +37,10 @@ public final class DomFly extends JavaPlugin {
     public void init() {
         Metrics metrics = new Metrics(this, 28704);
         configuration = new Configuration(this);
+        languageManager = new LanguageManager(this);
         fly = new Fly(this, configuration, languageManager);
         Bstats bstats = new Bstats(metrics, fly);
         bstats.FlightTable();
-        languageManager = new LanguageManager(this);
         PlgPre = languageManager.getPluginPrefix();
     }
 
