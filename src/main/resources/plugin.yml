@@ -1,6 +1,6 @@
 name: DomFly
 version: ${project.version}
-main: com.wunanc.domFly.DomFly
+main: top.wunanc.DomFly.DomFly
 api-version: '1.21'
 authors: [ Hotguo ]
 depend: [ Dominion ]

@@ -1,4 +1,4 @@
-package com.wunanc.domFly;
+package top.wunanc.DomFly;
 
 import cn.lunadeer.dominion.api.dtos.DominionDTO;
 import cn.lunadeer.dominion.api.DominionAPI;

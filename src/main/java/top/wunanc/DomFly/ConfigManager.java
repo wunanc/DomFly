@@ -1,4 +1,4 @@
-package com.wunanc.domFly;
+package top.wunanc.DomFly;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;

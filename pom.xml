@@ -37,7 +37,7 @@
                         <relocation>
                             <pattern>org.bstats</pattern>
                             <!-- TODO: Replace this with your package! -->
-                            <shadedPattern>com.wunanc.domFly</shadedPattern>
+                            <shadedPattern>com.wunanc.DomFly</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
