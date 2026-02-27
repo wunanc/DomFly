@@ -10,11 +10,13 @@ import top.wunanc.domfly.commands.MainCommand;
 import top.wunanc.domfly.config.Configuration;
 import top.wunanc.domfly.config.LanguageManager;
 import top.wunanc.domfly.handler.Fly;
+import top.wunanc.domfly.hooks.Bstats;
 
 public final class DomFly extends JavaPlugin {
     
     private Configuration configuration;
     private LanguageManager languageManager;
+    private Bstats bstats;
     private final CommandSender console = Bukkit.getConsoleSender();
     private Fly fly;
     private Component PlgPre = Component.text("[DomFly] ").color(NamedTextColor.GREEN);
@@ -22,12 +24,6 @@ public final class DomFly extends JavaPlugin {
     @Override
     public void onEnable() {
         init();
-        // 初始化配置管理器
-        configuration = new Configuration(this);
-        
-        // 初始化Fly类时传递ConfigManager
-        fly = new Fly(this, configuration, languageManager);
-        
         // 注册命令
         registerCommand();
 
@@ -41,6 +37,10 @@ public final class DomFly extends JavaPlugin {
 
     public void init() {
         Metrics metrics = new Metrics(this, 28704);
+        configuration = new Configuration(this);
+        fly = new Fly(this, configuration, languageManager);
+        bstats = new Bstats(metrics, fly);
+        bstats.FlightTable();
         languageManager = new LanguageManager(this);
         PlgPre = languageManager.getPluginPrefix();
     }

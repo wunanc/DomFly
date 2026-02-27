@@ -167,4 +167,11 @@ public class Fly implements Listener {
         player.setFlying(false);
     }
 
+    /**
+     * 获取当前正在飞行的玩家数量
+     * @return 正在飞行的玩家人数
+     */
+    public int getFlyingPlayerCount() {
+        return flyingPlayers.size();
+    }
 }

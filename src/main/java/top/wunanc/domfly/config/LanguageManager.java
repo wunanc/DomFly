@@ -109,12 +109,4 @@ public class LanguageManager {
         return LegacyToMiniMessage.parse(langConfig.getString(key));
     }
 
-    /**
-     * 根据键名获取原始消息
-     * @param key 键名
-     * @return 原始消息，如果键不存在则返回null
-     */
-    public String getRawMessage(String key) {
-        return langConfig.getString(key);
-    }
 }
