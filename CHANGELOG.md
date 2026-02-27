@@ -42,3 +42,16 @@
 - 计划
     - 添加检查更新功能
     - 添加一个placeholderapi占位符
+
+---
+
+## version 3.0.3 (2026-02-27)
+- 新增功能
+    - 无
+- 优化改进
+    - 无
+- 修复问题
+    - Illegal repetition 异常
+- 计划
+    - 添加检查更新功能
+    - 添加一个placeholderapi占位符
