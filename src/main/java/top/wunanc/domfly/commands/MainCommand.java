@@ -124,7 +124,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
 
     public void sendMessage(CommandSender sender, Component message) {
         if (message != null) {
-            sendMessage(sender, languageManager.getPluginPrefix().append(message));
+            sender.sendMessage(languageManager.getPluginPrefix().append(message));
         } else sender.sendMessage(Component.text("Can't find the message, please contact your administrator to check the DomFly language file!").color(NamedTextColor.RED));
     }
 
