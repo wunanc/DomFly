@@ -47,12 +47,15 @@ public class Fly implements Listener {
 
         // 检查玩家是否有权限
         if (!player.hasPermission("domfly.use")) {
-            player.sendMessage(ChatColor.RED + "你没有使用此命令的权限！");
+            player.sendMessage(languageManager.getMessage("NoPermission"));
             return;
         }
 
-        if (!isInOwnClaim(player)) {
-            player.sendMessage(ChatColor.RED + "你只能在自己的领地内使用飞行功能！");
+        if (isInOwnClaim(player)) {
+            // 切换飞行状态
+            toggleFlight(player);
+        } else {
+            player.sendMessage(languageManager.getMessage("OnlyOwner"));
             if (configuration.isDebug()) {
                 DominionDTO dominion = dominionAPI.getDominion(player.getLocation());
                 String dominionName = dominion != null ? dominion.getName() : "无";
@@ -60,9 +63,6 @@ public class Fly implements Listener {
             }
             return;
         }
-
-        // 切换飞行状态
-        toggleFlight(player);
     }
 
     /**
@@ -119,20 +119,15 @@ public class Fly implements Listener {
 
             //检查领地所有者UUID是否匹配玩家UUID
             UUID ownerUUID = dominion.getOwner();
-            if (ownerUUID != null && ownerUUID.equals(player.getUniqueId())) {
+            if (ownerUUID.equals(player.getUniqueId())) {
                 return true;
             }
 
-            boolean hasAdmin = DominionAPI.getInstance().checkPrivilegeFlag(
+            return DominionAPI.getInstance().checkPrivilegeFlag(
                     player.getLocation(),
                     Flags.ADMIN,
                     player
             );
-            if (hasAdmin) {
-                return true;
-            }
-
-            return false;
         } catch (Exception e) {
             plugin.getLogger().warning("领地检查错误: " + e.getMessage());
             return false;
