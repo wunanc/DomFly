@@ -1,4 +1,4 @@
-package top.wunanc.DomFly;
+package top.wunanc.domfly.commands;
 
 import org.bukkit.command.CommandSender;
 

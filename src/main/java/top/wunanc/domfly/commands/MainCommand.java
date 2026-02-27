@@ -1,4 +1,4 @@
-package top.wunanc.DomFly;
+package top.wunanc.domfly.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -6,6 +6,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
+import top.wunanc.domfly.DomFly;
+import top.wunanc.domfly.config.LanguageManager;
+import top.wunanc.domfly.handler.Fly;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +17,12 @@ public class MainCommand implements CommandExecutor, TabCompleter {
 
     private final DomFly plugin;
     private final Fly domflyListener;
+    private final LanguageManager languageManager;
 
-    public MainCommand(DomFly plugin, Fly domflyListener) {
+    public MainCommand(DomFly plugin, Fly domflyListener, LanguageManager languageManager) {
         this.plugin = plugin;
         this.domflyListener = domflyListener;
+        this.languageManager = languageManager;
     }
 
     @Override
@@ -25,12 +30,11 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         // 主命令（无参数） - 执行飞行功能
         if (args.length == 0) {
             // 检查发送者是否为玩家
-            if (!(sender instanceof Player)) {
-                sender.sendMessage("§c只有玩家可以使用此命令！");
+            if (!(sender instanceof Player player)) {
+                sender.sendMessage(languageManager.getMessage("OnlyPlayer"));
                 return true;
             }
 
-            Player player = (Player) sender;
             domflyListener.executeFlyCommand(player);
             return true;
         }

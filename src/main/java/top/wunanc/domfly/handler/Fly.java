@@ -1,4 +1,4 @@
-package top.wunanc.DomFly;
+package top.wunanc.domfly.handler;
 
 import cn.lunadeer.dominion.api.dtos.DominionDTO;
 import cn.lunadeer.dominion.api.DominionAPI;
@@ -10,6 +10,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import top.wunanc.domfly.config.Configuration;
+import top.wunanc.domfly.config.LanguageManager;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,13 +20,15 @@ import java.util.UUID;
 public class Fly implements Listener {
 
     private final JavaPlugin plugin;
-    private final ConfigManager configManager;
+    private final Configuration configuration;
     private final Set<UUID> flyingPlayers = new HashSet<>();
+    private final LanguageManager languageManager;
     DominionAPI dominionAPI = DominionAPI.getInstance();
 
-    public Fly(JavaPlugin plugin, ConfigManager configManager) {
+    public Fly(JavaPlugin plugin, Configuration configuration, LanguageManager languageManager) {
         this.plugin = plugin;
-        this.configManager = configManager;
+        this.configuration = configuration;
+        this.languageManager = languageManager;
         // 注册事件监听器
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
@@ -32,12 +36,12 @@ public class Fly implements Listener {
     public void executeFlyCommand(Player player) {
         // 原来onCommand中的逻辑，但去掉玩家检查，因为现在传入的肯定是Player
         if (player.getGameMode() == GameMode.CREATIVE) {
-            player.sendMessage(ChatColor.YELLOW + "你已经是创造模式了，无需使用领地飞行！");
+            player.sendMessage(languageManager.getMessage("IsCreativeMode"));
             return;
         }
 
         if (player.getGameMode() == GameMode.SPECTATOR) {
-            player.sendMessage(ChatColor.YELLOW + "你已经是旁观模式了，无需使用领地飞行！");
+            player.sendMessage(languageManager.getMessage("IsSpectatorMode"));
             return;
         }
 
@@ -49,7 +53,7 @@ public class Fly implements Listener {
 
         if (!isInOwnClaim(player)) {
             player.sendMessage(ChatColor.RED + "你只能在自己的领地内使用飞行功能！");
-            if (configManager.isDebug()) {
+            if (configuration.isDebug()) {
                 DominionDTO dominion = dominionAPI.getDominion(player.getLocation());
                 String dominionName = dominion != null ? dominion.getName() : "无";
                 plugin.getLogger().info("玩家: " + player.getName() + " 所在领地: " + dominionName);
@@ -170,7 +174,7 @@ public class Fly implements Listener {
         player.setFlying(false);
     }
     
-    public ConfigManager getConfigManager() {
-        return configManager;
+    public Configuration getConfigManager() {
+        return configuration;
     }
 }

@@ -1,0 +1,22 @@
+name: PR Build Check (Maven)
+
+on: [ pull_request, push ]
+
+jobs:
+  build:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Update Submodules
+        run: git submodule update --init --recursive
+      - name: Set up JDK 21 (OpenJDK)
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'        # 使用 Eclipse Temurin（OpenJDK 构建）
+          cache: maven                    # 启用 Maven 依赖缓存
+      - name: Build with Maven
+        run: mvn -B clean verify          # 或 mvn package，verify 会运行单元测试
+      - name: Done!
+        run: echo "Build completed successfully!"

@@ -4,15 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.wunanc</groupId>
+    <groupId>top.wunanc</groupId>
     <artifactId>DomFly</artifactId>
-    <version>2.2.1</version>
+    <version>3.0.1</version>
     <packaging>jar</packaging>
 
     <name>DomFly</name>
 
     <properties>
-        <java.version>21</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -24,6 +24,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
+                    <!-- 如果要支持 1.20.1，建议这里改为 17；如果只跑 1.21+ 则保持 21 -->
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
@@ -36,10 +37,22 @@
                     <relocations>
                         <relocation>
                             <pattern>org.bstats</pattern>
-                            <!-- TODO: Replace this with your package! -->
-                            <shadedPattern>com.wunanc.DomFly</shadedPattern>
+                            <!-- 建议改为全小写，并放在子包下 -->
+                            <shadedPattern>com.wunanc.domfly.bstats</shadedPattern>
                         </relocation>
                     </relocations>
+                    <!-- 添加以下过滤器来解决警告 -->
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>META-INF/MANIFEST.MF</exclude>
+                                <exclude>META-INF/*.SF</exclude>
+                                <exclude>META-INF/*.DSA</exclude>
+                                <exclude>META-INF/*.RSA</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
                 </configuration>
                 <executions>
                     <execution>
@@ -64,21 +77,29 @@
             <id>papermc-repo</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
+        <!-- 如果 DominionAPI 在特定仓库中，请确保仓库配置正确 -->
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
+        <!-- 修改 API 版本为 1.20.1 以获得最大兼容性 -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.21.8-R0.1-SNAPSHOT</version>
+            <version>1.20.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>cn.lunadeer</groupId>
             <artifactId>DominionAPI</artifactId>
             <version>4.7.3</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.bstats</groupId>
             <artifactId>bstats-bukkit</artifactId>

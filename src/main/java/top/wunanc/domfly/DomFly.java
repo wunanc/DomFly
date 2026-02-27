@@ -1,0 +1,76 @@
+package top.wunanc.domfly;
+
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import org.bstats.bukkit.Metrics;
+import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.java.JavaPlugin;
+import top.wunanc.domfly.commands.MainCommand;
+import top.wunanc.domfly.config.Configuration;
+import top.wunanc.domfly.config.LanguageManager;
+import top.wunanc.domfly.handler.Fly;
+
+public final class DomFly extends JavaPlugin {
+    
+    private Configuration configuration;
+    private LanguageManager languageManager;
+    private final CommandSender console = Bukkit.getConsoleSender();
+    private Fly fly;
+    private Component PlgPre = Component.text("[DomFly] ").color(NamedTextColor.GREEN);
+
+    @Override
+    public void onEnable() {
+        init();
+        // 初始化配置管理器
+        configuration = new Configuration(this);
+        
+        // 初始化Fly类时传递ConfigManager
+        fly = new Fly(this, configuration, languageManager);
+        
+        // 注册命令
+        registerCommand();
+
+        sendlog(console, Component.text("DomFly插件已启动！").color(NamedTextColor.GREEN));
+    }
+
+    @Override
+    public void onDisable() {
+        sendlog(console, Component.text("DomFly插件已禁用！").color(NamedTextColor.RED));
+    }
+
+    public void init() {
+        Metrics metrics = new Metrics(this, 28704);
+        languageManager = new LanguageManager(this);
+        PlgPre = languageManager.getPluginPrefix();
+    }
+
+    private void sendlog(CommandSender console, Component log) {
+        console.sendMessage(PlgPre.append(log));
+    }
+
+
+    public void registerCommand() {
+        var command = getCommand("domfly");
+        if (command != null) {
+            MainCommand mainCommand = new MainCommand(this, fly, languageManager);
+            command.setExecutor(mainCommand);
+            command.setTabCompleter(mainCommand);
+        } else {
+            sendlog(console, Component.text("无法注册domfly命令，请联系开发者或发送issues!").color(NamedTextColor.RED));
+        }
+    }
+
+    public Configuration getConfigManager() {
+        return configuration;
+    }
+
+    public Fly getFly() {
+        return fly;
+    }
+    
+    public void reloadPluginConfig() {
+        configuration.reload();
+        languageManager.reload();
+    }
+}

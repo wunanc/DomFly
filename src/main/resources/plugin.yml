@@ -1,7 +1,7 @@
 name: DomFly
 version: ${project.version}
-main: top.wunanc.DomFly.DomFly
-api-version: '1.21'
+main: top.wunanc.domfly.DomFly
+api-version: '1.20'
 authors: [ Hotguo ]
 depend: [ Dominion ]
 description: Dominion Territory Flight Add-on Plugin.

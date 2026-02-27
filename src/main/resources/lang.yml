@@ -1,0 +1,6 @@
+PluginPrefix: "&f[&aDomFly&f]"
+NoPermission: "&c你没有权限!"
+OnlyPlayer: "&c只有玩家才能执行此命令!"
+IsCreativeMode: "&c你已经是创造模式了，无需使用领地飞行！"
+IsSpectatorMode: "&c你已经是旁观者模式了，无需使用领地飞行！"
+OnlyOwner: "&c只有领地管理者才能执行此命令!"
