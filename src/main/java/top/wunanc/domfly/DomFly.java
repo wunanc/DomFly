@@ -16,7 +16,6 @@ public final class DomFly extends JavaPlugin {
     
     private Configuration configuration;
     private LanguageManager languageManager;
-    private Bstats bstats;
     private final CommandSender console = Bukkit.getConsoleSender();
     private Fly fly;
     private Component PlgPre = Component.text("[DomFly] ").color(NamedTextColor.GREEN);
@@ -39,7 +38,7 @@ public final class DomFly extends JavaPlugin {
         Metrics metrics = new Metrics(this, 28704);
         configuration = new Configuration(this);
         fly = new Fly(this, configuration, languageManager);
-        bstats = new Bstats(metrics, fly);
+        Bstats bstats = new Bstats(metrics, fly);
         bstats.FlightTable();
         languageManager = new LanguageManager(this);
         PlgPre = languageManager.getPluginPrefix();
@@ -61,14 +60,6 @@ public final class DomFly extends JavaPlugin {
         }
     }
 
-    public Configuration getConfigManager() {
-        return configuration;
-    }
-
-    public Fly getFly() {
-        return fly;
-    }
-    
     public void reloadPluginConfig() {
         configuration.reload();
         languageManager.reload();
