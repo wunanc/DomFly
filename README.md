@@ -2,10 +2,10 @@
 
 **🚀 Minecraft 领地飞行插件**
 
-[![Version](https://img.shields.io/badge/version-2.0.3-blue.svg)](https://github.com/wunanc/DomFly)
-[![Minecraft](https://img.shields.io/badge/minecraft-1.21.8-green.svg)](https://papermc.io/)
-[![Java](https://img.shields.io/badge/java-21-orange.svg)](https://adoptium.net/)
-[![License](https://img.shields.io/badge/license-MIT-red.svg)](LICENSE)
+[![Latest Build](https://img.shields.io/github/v/release/wunanc/DomFly?label=%E6%9C%80%E6%96%B0%E6%9E%84%E5%BB%BA%E4%B8%8B%E8%BD%BD&logo=github&color=0aa344)](https://github.com/wunanc/DomFly/releases/latest)
+![Java](https://img.shields.io/badge/Java-17-blue.svg)
+![Platform](https://img.shields.io/badge/Platform-Paper%20%7C%20Folia-brightgreen.svg)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 [简体中文]  | [English](README_EN.md)
 
@@ -27,7 +27,7 @@ DomFly 是一个轻量级的 Minecraft 服务器插件，专为 Paper/Spigot/Fol
 
 ### 📋 系统要求
 
-- **Minecraft 版本**: 1.21.8 或更高
+- **Minecraft 版本**: 1.20.1 或更高
 - **服务端**: Paper / Spigot / Purpur / Folia
 - **Java 版本**: Java 21 或更高
 - **依赖插件**: 需要领地插件Dominion
@@ -106,16 +106,6 @@ mvn clean package
 
 # 构建产物位于 target/DomFly-*.jar
 ```
-
-### 🤝 贡献指南
-
-欢迎提交 Issue 和 Pull Request！
-
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 提交 Pull Request
 
 ### 📝 变更日志
 

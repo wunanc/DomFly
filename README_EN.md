@@ -1,142 +1,132 @@
 <div align="center">
 
-**🚀 Minecraft Territory Flight Plugin**
+**🚀 Minecraft Land Flight Plugin**
 
-[![Version](https://img.shields.io/badge/version-2.0.3-blue.svg)](https://github.com/wunanc/DomFly)
-[![Minecraft](https://img.shields.io/badge/minecraft-1.21.8-green.svg)](https://papermc.io/)
-[![Java](https://img.shields.io/badge/java-21-orange.svg)](https://adoptium.net/)
-[![License](https://img.shields.io/badge/license-MIT-red.svg)](LICENSE)
+[![Latest Build](https://img.shields.io/github/v/release/wunanc/DomFly?label=%E6%9C%80%E6%96%B0%E6%9E%84%E5%BB%BA%E4%B8%8B%E8%BD%BD&logo=github&color=0aa344)](https://github.com/wunanc/DomFly/releases/latest)
+![Java](https://img.shields.io/badge/Java-17-blue.svg)
+![Platform](https://img.shields.io/badge/Platform-Paper%20%7C%20Folia-brightgreen.svg)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-[简体中文](README.md)  | [English]
+[English]  | [简体中文](README.md)
 
 </div>
 
 ---
 
-### 📖 Project Overview
+### 📖 Introduction
 
-DomFly is a lightweight Minecraft server plugin designed for Paper/Spigot/Folia servers. This plugin allows players to fly freely within their own territory, providing convenience for building and managing claimed lands.
+DomFly is a lightweight Minecraft server plugin designed for Paper/Spigot/Folia servers. It allows players to fly freely within their claimed lands, providing convenience for building and land management while maintaining game balance.
 
-### ✨ Main Features
+### ✨ Features
 
-- **🏠 Territory Flight** - Players can enable flight mode within their own claims.
-- **🔐 Permission Management** - Flexible permission system for fine-grained control over player flight access.
-- **⚡ Auto Detection** - Automatically detects whether a player is within their claim and disables flight upon leaving.
-- **🎯 Lightweight & Efficient** - Optimized performance with minimal server resource usage.
-- **🌐 Multi-language Support** - Supports custom messages and multiple languages.
+- **🏠 Land Flight** - Players can enable flight mode within lands they own
+- **🔐 Permission Management** - Flexible permission system for fine-grained control over player flight
+- **⚡ Auto Detection** - Automatically detects if a player is inside their land and disables flight upon leaving
+- **🎯 Lightweight & Efficient** - Optimized for minimal server resource usage
+- **🌐 Multi-language Support** - Customizable messages and multi-language support
 
 ### 📋 Requirements
 
-- **Minecraft Version**: 1.21.8 or above
-- **Server**: Paper / Spigot / Purpur / Folia
-- **Java Version**: Java 21 or above
-- **Dependency**: Requires Dominion territory plugin
+- **Minecraft Version**: 1.20.1 or higher
+- **Server Software**: Paper / Spigot / Purpur / Folia
+- **Java Version**: Java 21 or higher
+- **Dependency**: Requires the Dominion land plugin
 
 ### 📥 Installation
 
-1. **Download the Plugin**
-   - Download the latest `DomFly.jar` from the [Releases](https://github.com/wunanc/DomFly/releases) page.
+1. **Download the plugin**
+   - Download the latest `DomFly.jar` from the [Releases](https://github.com/wunanc/DomFly/releases) page
 
-2. **Install to Server**
+2. **Install to server**
    ```bash
-   # Place the jar file in your server's plugins folder
+   # Place the jar file into the server's plugins folder
    cp DomFly.jar ./plugins/
    ```
 
-3. **Restart the Server**
+3. **Restart the server**
    ```bash
-   # Restart your server to load the plugin
-   stop  # Or use another restart command
+   # Restart the server to load the plugin
+   stop  # or use other restart commands
    ```
 
-4. **Configure the Plugin**
-   - This plugin currently does not have a configuration file.
+4. **Configure the plugin**
+   - This plugin currently has no configuration file
 
-5. **Set Permissions**
-   - Use LuckPerms or another permission plugin to set permissions.
+5. **Set up permissions**
+   - Use a permissions plugin like LuckPerms to assign permissions
 
 ### 🎮 Usage
 
 #### Basic Commands
 
-- `/domfly` - Toggle flight mode within your own claims
-- `/domfly help` - Show help information
-- `/domfly reload` - Reload configuration (requires admin)
-- `/domfly undomfly <player>` - Force disable flight for a player
+- `/domfly` - Toggle flight mode within your own land
+- `/domfly help` - Display help information
+- `/domfly reload` - Reload the configuration file (requires admin permission)
+- `/domfly undomfly <player>` - Forcefully disable flight for a player
 
-#### Usage Flow
+#### How to Use
 
-1. Player enters a claim they own or have access to.
-2. Grant the player `domfly.use` permission.
-3. Use the `/domfly` command to enable flight.
-4. Freely fly within the claim.
-5. Flight is automatically disabled when leaving the claim.
+1. Player enters a land they own or have permission in
+2. Grant the player the `domfly.use` permission
+3. Use the `/domfly` command to enable flight
+4. Fly freely within the land
+5. Flight mode is automatically disabled when leaving the land
 
 ### 🔐 Permission Nodes
 
-| Node            | Description                      | Default |
-|-----------------|----------------------------------|---------|
-| `domfly.use`    | Use basic flight functionality   | op      |
-| `domfly.admin`  | Use admin commands (reload etc.) | op      |
+| Permission Node | Description | Default |
+|---------|------|-----|
+| `domfly.use` | Allows basic flight functionality | op |
+| `domfly.admin` | Allows admin commands (e.g., reload) | op |
 
-### ⚙️ Configuration Guide
+### ⚙️ Configuration
 
 Configuration file location: `plugins/DomFly/config.yml`
 
-#### None yet
+#### Currently none
 
-### 🛠️ Development & Build
+### 🛠️ Development Build
 
 #### Prerequisites
 
-- JDK 21 or above
-- Maven 3.6 or above
+- JDK 21 or higher
+- Maven 3.6 or higher
 - Git
 
 #### Build Steps
 
 ```bash
-# Clone the repo
+# Clone the repository
 git clone https://github.com/wunanc/DomFly.git
 cd DomFly
 
 # Build with Maven
 mvn clean package
 
-# Built artifacts will be in target/DomFly-*.jar
+# The built artifact is located at target/DomFly-*.jar
 ```
-
-### 🤝 Contributing
-
-Contributions are welcome! Please submit issues and pull requests.
-
-1. Fork this repo
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a pull request
 
 ### 📝 Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for details of version updates.
+See [CHANGELOG.md](CHANGELOG.md) for detailed version history.
 
 ### 📄 License
 
-This project is under the MIT License - see [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ### 👥 Author
 
 - **wunanc | Hotguo** - *Main Developer*
 
-### 🙏 Thanks
+### 🙏 Acknowledgements
 
-Thanks to all developers and users who contributed to this project!
+Thanks to all the developers and users who have contributed to this project!
 
 ### 📞 Support & Feedback
 
-- 🐛 [Report Bugs](https://github.com/wunanc/DomFly/issues)
-- 💡 [Feature Suggestions](https://github.com/wunanc/DomFly/issues)
-- 📧 Contact Author: via GitHub Issues
+- 🐛 [Report a Bug](https://github.com/wunanc/DomFly/issues)
+- 💡 [Feature Requests](https://github.com/wunanc/DomFly/issues)
+- 📧 Contact the author: via GitHub Issues
 
 ---
 
@@ -144,6 +134,8 @@ Thanks to all developers and users who contributed to this project!
 
 **Made with ❤️ by Hotguo**
 
-⭐ If you like this project, please consider giving it a Star!
+⭐ If you like this project, consider giving it a Star!
+
+[![bStats](https://bstats.org/signatures/bukkit/DomFly.svg)](https://bstats.org/plugin/bukkit/DomFly)
 
 </div>
