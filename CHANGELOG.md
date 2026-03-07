@@ -1,34 +1,47 @@
 <div align="center">
 
-# DomFly更新记录
+# DomFly更新记录(DomFlyUpdatesRecords)
 
 </div>
 
-## version 3.0.0 (2026-02-27)
- - 新增功能
-   - 启用Bstats 
-   - 添加了语言文件
-   - 重构了插件
- - 优化改进
-   - 优化了主命令
- - 修复问题
-   - 无
- - 计划
-   - 添加检查更新功能
-   - 添加一个placeholderapi占位符
+## version 3.1.0 (2026-03-07)
+- 新增功能
+    - 无
+- 优化改进
+    - 当玩家被剥夺权限时，自动停止飞行
+    - 当玩家退出游戏时取消飞行
+    - 当服务器关闭时取消所有玩家的飞行
+- 修复问题
+    - 无
+- 计划
+    - 添加检查更新功能
+    - 添加一个placeholderapi占位符
+
+## version 3.1.0 (2026-03-07)
+- New features
+    - None
+- Optimization improvements
+    - Automatically stop flying when the player is deprived of privileges
+    - Cancel the flight when the player exits the game
+    - Cancel all players' flights when the servers are down
+- Fix the problem
+    - None
+- Plan
+    - Added the ability to check for updates
+    - Add a placeholderapi placeholder
 
 ---
 
-## version 3.0.1 (2026-02-27)
+## version 3.0.3 (2026-02-27)
 - 新增功能
-   - 无
+    - 无
 - 优化改进
-   - 无
+    - 无
 - 修复问题
-   - 修复domfly指令无法使用问题
+    - Illegal repetition 异常
 - 计划
-   - 添加检查更新功能
-   - 添加一个placeholderapi占位符
+    - 添加检查更新功能
+    - 添加一个placeholderapi占位符
 
 ---
 
@@ -45,13 +58,28 @@
 
 ---
 
-## version 3.0.3 (2026-02-27)
+## version 3.0.1 (2026-02-27)
 - 新增功能
     - 无
 - 优化改进
     - 无
 - 修复问题
-    - Illegal repetition 异常
+    - 修复domfly指令无法使用问题
+- 计划
+    - 添加检查更新功能
+    - 添加一个placeholderapi占位符
+
+---
+
+## version 3.0.0 (2026-02-27)
+- 新增功能
+    - 启用Bstats
+    - 添加了语言文件
+    - 重构了插件
+- 优化改进
+    - 优化了主命令
+- 修复问题
+    - 无
 - 计划
     - 添加检查更新功能
     - 添加一个placeholderapi占位符

@@ -109,7 +109,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
     private void forceDisableDomfly(Player target, CommandSender executor) {
         try {
             if (domflyListener != null) {
-                domflyListener.forceDisableFlight(target);
+                domflyListener.forceDisableFlight(target, false);
                 Component message = languageManager.getMessage("SudoDisabledexecutor")
                         .replaceText(builder -> builder.matchLiteral("{player}").replacement(target.getName()));
                 sendMessage(executor, message);

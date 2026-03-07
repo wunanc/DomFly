@@ -4,6 +4,7 @@ main: top.wunanc.domfly.DomFly
 api-version: '1.20'
 authors: [ Hotguo ]
 depend: [ Dominion ]
+softdepend: [ LuckPerms ]
 description: Dominion Territory Flight Add-on Plugin.
 folia-supported: true
 

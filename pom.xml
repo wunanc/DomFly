@@ -6,7 +6,7 @@
 
     <groupId>top.wunanc</groupId>
     <artifactId>DomFly</artifactId>
-    <version>3.0.3</version>
+    <version>3.1.0</version>
     <packaging>jar</packaging>
 
     <name>DomFly</name>
@@ -105,6 +105,13 @@
             <artifactId>bstats-bukkit</artifactId>
             <version>3.1.0</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>net.luckperms</groupId>
+            <artifactId>api</artifactId>
+            <version>5.4</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

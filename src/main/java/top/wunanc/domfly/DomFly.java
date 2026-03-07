@@ -11,9 +11,10 @@ import top.wunanc.domfly.config.Configuration;
 import top.wunanc.domfly.config.LanguageManager;
 import top.wunanc.domfly.handler.Fly;
 import top.wunanc.domfly.hooks.Bstats;
+import top.wunanc.domfly.hooks.LuckPermsListener;
 
 public final class DomFly extends JavaPlugin {
-    
+
     private Configuration configuration;
     private LanguageManager languageManager;
     private final CommandSender console = Bukkit.getConsoleSender();
@@ -22,32 +23,57 @@ public final class DomFly extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        init();
-        // 注册命令
+        // 先初始化，如果初始化失败（比如没装前置），则不注册后续内容
+        if (!init()) {
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }
         registerCommand();
-
         sendlog(console, Component.text("DomFly插件已启动！").color(NamedTextColor.GREEN));
     }
 
     @Override
     public void onDisable() {
+        if (fly != null) {
+            fly.disableAllFlight();
+        }
         sendlog(console, Component.text("DomFly插件已禁用！").color(NamedTextColor.RED));
     }
 
-    public void init() {
+    /**
+     * 初始化方法
+     * @return 如果初始化成功返回 true
+     */
+    public boolean init() {
+        this.configuration = new Configuration(this);
+        this.languageManager = new LanguageManager(this);
+
+        this.PlgPre = languageManager.getPluginPrefix();
+
+        if (Bukkit.getPluginManager().getPlugin("Dominion") == null) {
+            sendlog(console, Component.text("未找到 Dominion 插件! 插件已禁用。").color(NamedTextColor.RED));
+            Bukkit.getPluginManager().disablePlugin(this);
+            return false;
+        }
+        sendlog(console, Component.text("成功挂载 Dominion。").color(NamedTextColor.AQUA));
+
+        this.fly = new Fly(this, configuration, languageManager);
+
+        if (Bukkit.getPluginManager().getPlugin("LuckPerms") != null) {
+            new LuckPermsListener(this, fly).register();
+            sendlog(console, Component.text("成功挂载 LuckPerms。").color(NamedTextColor.AQUA));
+        } else sendlog(console, Component.text("未找到 LuckPerms 插件，可能导致部分功能无法使用!").color(NamedTextColor.YELLOW));
+
         Metrics metrics = new Metrics(this, 28704);
-        configuration = new Configuration(this);
-        languageManager = new LanguageManager(this);
-        fly = new Fly(this, configuration, languageManager);
         Bstats bstats = new Bstats(metrics, fly);
         bstats.FlightTable();
-        PlgPre = languageManager.getPluginPrefix();
+
+        return true;
     }
 
     private void sendlog(CommandSender console, Component log) {
         console.sendMessage(PlgPre.append(log));
     }
-
 
     public void registerCommand() {
         var command = getCommand("domfly");
@@ -55,8 +81,6 @@ public final class DomFly extends JavaPlugin {
             MainCommand mainCommand = new MainCommand(this, fly, languageManager);
             command.setExecutor(mainCommand);
             command.setTabCompleter(mainCommand);
-        } else {
-            sendlog(console, Component.text("无法注册domfly命令，请联系开发者或发送issues!").color(NamedTextColor.RED));
         }
     }
 
