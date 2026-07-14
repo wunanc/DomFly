@@ -90,7 +90,7 @@ DomFly 是一个轻量级的 Minecraft 服务器插件，专为 Paper/Spigot/Fol
 
 #### 前置要求
 
-- JDK 21 或更高版本
+- JDK 17 或更高版本
 - Maven 3.6 或更高版本
 - Git
 
@@ -109,7 +109,7 @@ mvn clean package
 
 ### 📝 变更日志
 
-查看 [CHANGELOG.md](CHANGELOG.md) 了解详细的版本更新历史。
+查看 [Commits](https://github.com/wunanc/DomFly/commits/master/) 了解详细的版本更新历史。
 
 ### 📄 许可证
 
@@ -127,6 +127,7 @@ mvn clean package
 
 - 🐛 [报告 Bug](https://github.com/wunanc/DomFly/issues)
 - 💡 [功能建议](https://github.com/wunanc/DomFly/issues)
+- 🐧 [Q群](https://qm.qq.com/q/VQrOYySVie)
 - 📧 联系作者：通过 GitHub Issues
 
 ---

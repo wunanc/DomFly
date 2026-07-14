@@ -89,7 +89,7 @@ Configuration file location: `plugins/DomFly/config.yml`
 
 #### Prerequisites
 
-- JDK 21 or higher
+- JDK 17 or higher
 - Maven 3.6 or higher
 - Git
 
@@ -108,7 +108,7 @@ mvn clean package
 
 ### 📝 Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for detailed version history.
+See [Commits](https://github.com/wunanc/DomFly/commits/master/) for detailed version history.
 
 ### 📄 License
 
@@ -126,6 +126,7 @@ Thanks to all the developers and users who have contributed to this project!
 
 - 🐛 [Report a Bug](https://github.com/wunanc/DomFly/issues)
 - 💡 [Feature Requests](https://github.com/wunanc/DomFly/issues)
+- 🐧 [Q Group](https://qm.qq.com/q/VQrOYySVie)
 - 📧 Contact the author: via GitHub Issues
 
 ---
