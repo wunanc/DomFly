@@ -24,7 +24,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
-                    <!-- 如果要支持 1.20.1，建议这里改为 17；如果只跑 1.21+ 则保持 21 -->
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
@@ -37,7 +36,6 @@
                     <relocations>
                         <relocation>
                             <pattern>org.bstats</pattern>
-                            <!-- 建议改为全小写，并放在子包下 -->
                             <shadedPattern>com.wunanc.domfly.bstats</shadedPattern>
                         </relocation>
                     </relocations>
@@ -77,15 +75,17 @@
             <id>papermc-repo</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
-        <!-- 如果 DominionAPI 在特定仓库中，请确保仓库配置正确 -->
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
+        <repository>
+            <id>placeholderapi</id>
+            <url>https://repo.helpch.at/releases/</url>
+        </repository>
     </repositories>
 
     <dependencies>
-        <!-- 修改 API 版本为 1.20.1 以获得最大兼容性 -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
@@ -111,6 +111,13 @@
             <groupId>net.luckperms</groupId>
             <artifactId>api</artifactId>
             <version>5.4</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>me.clip</groupId>
+            <artifactId>placeholderapi</artifactId>
+            <version>2.12.3</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

@@ -7,8 +7,7 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.wunanc.domfly.config.Configuration;
 import top.wunanc.domfly.config.LanguageManager;
@@ -110,15 +109,20 @@ public class Fly implements Listener {
         }
     }
 
+    private void checkFlight(Player player) {
+        if (!flyingPlayers.contains(player.getUniqueId())) {
+            return;
+        }
+
+        if (!isInOwnClaim(player)) {
+            disableFlight(player);
+            player.sendMessage(languageManager.getMessage("AutoDisable"));
+        }
+    }
+
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
-        Player player = event.getPlayer();
-        if (flyingPlayers.contains(player.getUniqueId())) {
-            if (!isInOwnClaim(player)) {
-                disableFlight(player);
-                player.sendMessage(languageManager.getMessage("AutoDisable"));
-            }
-        }
+        checkFlight(event.getPlayer());
     }
 
     /**
@@ -130,6 +134,38 @@ public class Fly implements Listener {
         if (flyingPlayers.contains(player.getUniqueId())) {
             disableFlight(player);
         }
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+
+        // 下一Tick检查，防止跨服重连位置未同步
+        player.getScheduler().execute(plugin, () -> checkFlight(player), null, 1);
+    }
+
+    @EventHandler
+    public void onPlayerChangedWorld(PlayerChangedWorldEvent event) {
+        Player player = event.getPlayer();
+
+        // 延迟几Tick等待世界切换完成
+        player.getScheduler().execute(plugin, () -> checkFlight(player), null, 5);
+    }
+
+    @EventHandler
+    public void onPlayerTeleport(PlayerTeleportEvent event) {
+        Player player = event.getPlayer();
+
+        long delay;
+
+        // 跨世界传送（例如 /server、末地门、下界门）
+        if (event.getFrom().getWorld() != event.getTo().getWorld()) {
+            delay = 20; // 1 秒
+        } else {
+            delay = 2; // 同世界传送稍微等一下即可
+        }
+
+        player.getScheduler().execute(plugin, () -> checkFlight(player), null, delay);
     }
 
     /**

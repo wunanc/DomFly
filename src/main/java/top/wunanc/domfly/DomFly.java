@@ -12,6 +12,7 @@ import top.wunanc.domfly.config.LanguageManager;
 import top.wunanc.domfly.handler.Fly;
 import top.wunanc.domfly.hooks.Bstats;
 import top.wunanc.domfly.hooks.LuckPermsListener;
+import top.wunanc.domfly.hooks.PapiExpansion;
 
 public final class DomFly extends JavaPlugin {
 
@@ -63,6 +64,11 @@ public final class DomFly extends JavaPlugin {
             new LuckPermsListener(this, fly).register();
             sendlog(console, Component.text("成功挂载 LuckPerms。").color(NamedTextColor.AQUA));
         } else sendlog(console, Component.text("未找到 LuckPerms 插件，可能导致部分功能无法使用!").color(NamedTextColor.YELLOW));
+
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
+            new PapiExpansion(this, fly).register();
+            sendlog(console, Component.text("成功挂载 PlaceholderAPI。").color(NamedTextColor.AQUA));
+        } else sendlog(console, Component.text("未找到 PlaceholderAPI 插件，可能导致部分功能无法使用!").color(NamedTextColor.YELLOW));
 
         Metrics metrics = new Metrics(this, 28704);
         Bstats bstats = new Bstats(metrics, fly);
