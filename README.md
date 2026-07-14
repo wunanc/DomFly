@@ -29,7 +29,7 @@ DomFly 是一个轻量级的 Minecraft 服务器插件，专为 Paper/Spigot/Fol
 
 - **Minecraft 版本**: 1.20.1 或更高
 - **服务端**: Paper / Spigot / Purpur / Folia
-- **Java 版本**: Java 21 或更高
+- **Java 版本**: Java 17 或更高
 - **依赖插件**: 需要领地插件Dominion
 
 ### 📥 安装方法
@@ -74,9 +74,9 @@ DomFly 是一个轻量级的 Minecraft 服务器插件，专为 Paper/Spigot/Fol
 
 ### 🔐 权限节点
 
-| 权限节点 | 说明 | 默认值 |
-|---------|------|-----|
-| `domfly.use` | 允许使用基础飞行功能 | op  |
+| 权限节点           | 说明                 | 默认值 |
+|----------------|--------------------|-----|
+| `domfly.use`   | 允许使用基础飞行功能         | op  |
 | `domfly.admin` | 允许使用管理命令（如 reload） | op  |
 
 ### ⚙️ 配置说明

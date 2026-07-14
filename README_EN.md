@@ -29,7 +29,7 @@ DomFly is a lightweight Minecraft server plugin designed for Paper/Spigot/Folia 
 
 - **Minecraft Version**: 1.20.1 or higher
 - **Server Software**: Paper / Spigot / Purpur / Folia
-- **Java Version**: Java 21 or higher
+- **Java Version**: Java 17 or higher
 - **Dependency**: Requires the Dominion land plugin
 
 ### 📥 Installation
@@ -74,10 +74,10 @@ DomFly is a lightweight Minecraft server plugin designed for Paper/Spigot/Folia 
 
 ### 🔐 Permission Nodes
 
-| Permission Node | Description | Default |
-|---------|------|-----|
-| `domfly.use` | Allows basic flight functionality | op |
-| `domfly.admin` | Allows admin commands (e.g., reload) | op |
+| Permission Node | Description                          | Default |
+|-----------------|--------------------------------------|---------|
+| `domfly.use`    | Allows basic flight functionality    | op      |
+| `domfly.admin`  | Allows admin commands (e.g., reload) | op      |
 
 ### ⚙️ Configuration
 
