@@ -79,6 +79,15 @@ DomFly 是一个轻量级的 Minecraft 服务器插件，专为 Paper/Spigot/Fol
 | `domfly.use`   | 允许使用基础飞行功能         | op  |
 | `domfly.admin` | 允许使用管理命令（如 reload） | op  |
 
+### 📊 PlaceholderAPI 占位符
+
+> 前提：安装 PlaceholderAPI，并启用 DomFly 扩展。
+
+| 占位符                       | 说明                       | 示例输出             |
+|---------------------------|--------------------------|------------------|
+| `%domfly_flying%`         | 当前玩家是否处于 DomFly 飞行状态     | `true` / `false` |
+| `%domfly_flying_players%` | 当前服务器正在使用 DomFly 飞行的玩家数量 | `0`、`5`、`12`...  |
+
 ### ⚙️ 配置说明
 
 配置文件位置：`plugins/DomFly/config.yml`

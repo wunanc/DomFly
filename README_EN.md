@@ -79,6 +79,15 @@ DomFly is a lightweight Minecraft server plugin designed for Paper/Spigot/Folia 
 | `domfly.use`    | Allows basic flight functionality    | op      |
 | `domfly.admin`  | Allows admin commands (e.g., reload) | op      |
 
+### 📊 PlaceholderAPI Placeholders
+
+> Requires PlaceholderAPI. DomFly will automatically register its expansion.
+
+| Placeholder               | Description                                      | Example Output    |
+|---------------------------|--------------------------------------------------|-------------------|
+| `%domfly_flying%`         | Whether the current player is flying with DomFly | `true` / `false`  |
+| `%domfly_flying_players%` | Number of players currently flying with DomFly   | `0`, `5`, `12`... |
+
 ### ⚙️ Configuration
 
 Configuration file location: `plugins/DomFly/config.yml`

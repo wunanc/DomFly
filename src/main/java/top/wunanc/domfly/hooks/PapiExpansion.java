@@ -27,9 +27,10 @@ public class PapiExpansion extends PlaceholderExpansion {
         return "Wunanc";
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     @Override
     public @NotNull String getVersion() {
-        return plugin.getDescription().getVersion();
+        return plugin.getPluginMeta().getVersion();
     }
 
     @Override
